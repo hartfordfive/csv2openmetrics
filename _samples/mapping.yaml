@@ -1,0 +1,14 @@
+---
+files:
+  - 
+    filename: _samples/test_temperature_data.csv
+    title_row: true
+    timestamp_col_index: 1
+    series_prefix: daily_temperature
+    fields:
+      1: date;type=timestamp
+      2: prov;type=label
+      3: city;type=label
+      4: high;type=value,val_type=gauge,help=High temperature of the day
+      5: low;type=value,val_type=gauge,help=Low temperature of the day
+    output: _samples/test_temperature_data.otsdb
