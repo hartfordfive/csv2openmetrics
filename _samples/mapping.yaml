@@ -6,9 +6,9 @@ files:
     timestamp_col_index: 1
     series_prefix: daily_temperature
     fields:
-      1: date;type=timestamp
-      2: prov;type=label
-      3: city;type=label
-      4: high;type=value,val_type=gauge,help=High temperature of the day
-      5: low;type=value,val_type=gauge,help=Low temperature of the day
+      0: date;type=timestamp
+      1: prov;type=label
+      2: city;type=label
+      3: high;type=value,val_type=gauge,help=High temperature of the day
+      4: low;type=value,val_type=gauge,help=Low temperature of the day
     output: _samples/test_temperature_data.otsdb
