@@ -37,6 +37,7 @@ func (m *Metric) ToString() string {
 	if err != nil {
 		panic(err.Error())
 	}
+	t := ts.UnixMilli()
 
 	if len(m.Labels) >= 1 {
 		flattendLabels := []string{}
@@ -44,17 +45,17 @@ func (m *Metric) ToString() string {
 			flattendLabels = append(flattendLabels, fmt.Sprintf("%s=\"%s\"", k, v))
 		}
 		if ValueCanBeInt(m.Value) {
-			return fmt.Sprintf("%s{%s} %s %s", m.Name, strings.Join(flattendLabels, ", "), convertToIntString(m.Value), ts)
+			return fmt.Sprintf("%s{%s} %s %d", m.Name, strings.Join(flattendLabels, ", "), convertToIntString(m.Value), t)
 		} else {
-			return fmt.Sprintf("%s{%s} %f %s", m.Name, strings.Join(flattendLabels, ", "), m.Value, ts)
+			return fmt.Sprintf("%s{%s} %f %d", m.Name, strings.Join(flattendLabels, ", "), m.Value, t)
 		}
 
 	} else {
 
 		if ValueCanBeInt(m.Value) {
-			return fmt.Sprintf("%s %s", m.Name, convertToIntString(m.Value))
+			return fmt.Sprintf("%s %s %d", m.Name, convertToIntString(m.Value), t)
 		} else {
-			return fmt.Sprintf("%s %f", m.Name, m.Value)
+			return fmt.Sprintf("%s %f %d", m.Name, m.Value, t)
 		}
 	}
 }

@@ -112,7 +112,6 @@ func (g *Generator) ConvertToOpenMetricsFormat(fileMapping CsvFile, outputFile s
 		if err == io.EOF {
 			break
 		}
-		//log.Printf("Reading row #%d", rowIndex)
 		if err != nil {
 			log.Fatal(err)
 		}
