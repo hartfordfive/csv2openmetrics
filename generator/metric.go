@@ -32,7 +32,6 @@ func convertToIntString(val float64) string {
 
 func (m *Metric) ToString() string {
 
-	fmt.Println("Date passed in:", m.Timestamp)
 	ts, err := dateparse.ParseLocal(m.Timestamp)
 	if err != nil {
 		panic(err.Error())

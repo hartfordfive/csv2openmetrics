@@ -26,12 +26,11 @@ type CsvMappingConfg struct {
 }
 
 type CsvFile struct {
-	Filename          string         `yaml:"filename"`
-	TitleRow          bool           `yaml:"title_row"`
-	SeriesPrefix      string         `yaml:"series_prefix"`
-	TimestampColIndex int            `yaml:"timestamp_col_index"`
-	Fields            map[int]string `yaml:"fields"`
-	Output            string         `yaml:"output"`
+	Filename     string         `yaml:"filename"`
+	TitleRow     bool           `yaml:"title_row"`
+	SeriesPrefix string         `yaml:"series_prefix"`
+	Fields       map[int]string `yaml:"fields"`
+	OutputDir    string         `yaml:"output_dir"`
 }
 
 func newMappingConfig(mappingConf string) *CsvMappingConfg {

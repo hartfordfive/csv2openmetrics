@@ -1,14 +1,46 @@
 ---
 files:
+  # - 
+  #   filename: _samples/test_temperature_data.csv
+  #   title_row: true
+  #   timestamp_col_index: 0
+  #   series_prefix: daily_temperature
+  #   fields:
+  #     0: date;type=timestamp
+  #     1: prov;type=label
+  #     2: city;type=label
+  #     3: high;type=value,val_type=gauge,help=High temperature of the day
+  #     4: low;type=value,val_type=gauge,help=Low temperature of the day
+  #   output: _samples/test_temperature_data.om
+
+  # - 
+  #   filename: /Users/alain/github/Covid19Canada/timeseries_prov/cases_timeseries_prov.csv
+  #   title_row: true
+  #   timestamp_col_index: 1
+  #   series_prefix: covid19_canada_case
+  #   fields:
+  #     0: prov;type=label
+  #     1: date;type=timestamp
+  #     3: cases;type=value,val_type=gauge,help=Number of cases reported for the day
+  #     4: cumulative_cases;type=value,val_type=counter,help=Total cumuliative cases as of this date
+  #   output_dir: _samples/covid19_canada_provicial_cases.om
+
   - 
-    filename: _samples/test_temperature_data.csv
+    filename: /Users/alain/Downloads/covid19-data-basic.csv
     title_row: true
-    timestamp_col_index: 1
-    series_prefix: daily_temperature
+    series_prefix: covid19_canada
     fields:
-      0: date;type=timestamp
-      1: prov;type=label
-      2: city;type=label
-      3: high;type=value,val_type=gauge,help=High temperature of the day
-      4: low;type=value,val_type=gauge,help=Low temperature of the day
-    output: _samples/test_temperature_data.otsdb
+      0: location_id;type=omit
+      1: location;type=label
+      2: date;type=timestamp
+      3: cases_confirmed;type=value,val_type=gauge,help=Number of confirmed cases
+      4: cases_probable;type=value,val_type=gauge,help=Number of probable cases
+      5: deaths;type=value,val_type=gauge,help=Number of probable cases
+      6: cases_total;type=value,val_type=counter,help=Number of probable cases
+      7: people_tested;type=value,val_type=gauge,help=Number of probable cases
+      8: tests;type=value,val_type=gauge,help=Number of probable cases
+    output_dir: _samples/covid19_canada
+
+
+
+    

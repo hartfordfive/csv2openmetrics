@@ -18,7 +18,7 @@ func Execute() error {
 
 var (
 	FlagConfigPath string
-	FlagOutputFile string
+	FlagOutputDir  string
 	FlagLogLevel   string
 )
 
@@ -33,7 +33,7 @@ to go here.`,
 
 func init() {
 	GenerateCmd.Flags().StringVarP(&FlagConfigPath, "config", "c", "", "Path to the configuration file")
-	GenerateCmd.Flags().StringVarP(&FlagOutputFile, "output", "o", "", "Path OpenTSDB output file")
+	GenerateCmd.Flags().StringVarP(&FlagOutputDir, "output", "o", "", "Directory to write OpenTSDB output file")
 	GenerateCmd.Flags().StringVarP(&FlagLogLevel, "log-level", "l", "", "Set log level (DEBUG,INFO,WARN,ERROR)")
 	entry.AddCommand(GenerateCmd, VersionCmd)
 }
@@ -51,11 +51,12 @@ var GenerateCmd = &cobra.Command{
 			os.Exit(1)
 		}
 		for _, f := range g.Config.Files {
-			if err := g.ConvertToOpenMetricsFormat(f, FlagOutputFile); err != nil {
+			if err := g.ConvertToOpenMetricsFormat(f); err != nil {
 				fmt.Errorf("[ERROR] Could not initiate CSV to OpenTSDB generator: %v", err)
 				os.Exit(1)
 			}
 		}
+		fmt.Println("Conversion complete.")
 		os.Exit(0)
 	},
 }
